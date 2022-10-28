@@ -8,6 +8,7 @@ const LoadingPage = () => {
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center">
+      {/* if you want to create svg https://danmarshall.github.io/google-font-to-svg-path/ */}
       <svg
         width="255"
         height="77"
