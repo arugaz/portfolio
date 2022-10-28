@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/data/*": ["data/*"],
+      "@/image/*": ["public/images/*"],
+      "@/style/*": ["styles/*"]
+    },
+    "target": "es5"
+  }
+}
