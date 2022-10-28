@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { contentAnimation, fadeAnimation, cardHomeAnimation } from '@/data/animations';
-import profileImage from '@/image/profile/profile.jpg';
+import profileImage from '@/image/pages/profile.jpg';
 
 const Home = () => {
   return (
@@ -48,7 +48,7 @@ const Home = () => {
         <h3 className="-mb-5 text-base font-normal">Hi there! i&apos;m...</h3>
         <h1 className="-ml-1 mb-3 text-7xl font-bold text-primary-light">arugaz</h1>
         <h4 className="text-sm font-light transition-all duration-500 hover:text-primary-light">
-          cat lover | backend dev
+          cat lover
         </h4>
       </motion.section>
     </main>

@@ -19,12 +19,12 @@ const MyApp = ({ Component, pageProps }) => {
     const mouseMove = ({ clientX, clientY }) => setMousePosition({ x: clientX, y: clientY });
 
     window.addEventListener('mousemove', mouseMove);
-    window.addEventListener('mouseenter', mouseIn, true);
     window.addEventListener('mouseout', mouseOut, true);
+    window.addEventListener('mouseenter', mouseIn, true);
     return () => {
       window.removeEventListener('mousemove', mouseMove);
-      window.removeEventListener('mouseenter', mouseIn, true);
       window.removeEventListener('mouseout', mouseOut, true);
+      window.removeEventListener('mouseenter', mouseIn, true);
     };
   }, []);
 
