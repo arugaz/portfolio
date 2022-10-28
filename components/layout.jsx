@@ -8,14 +8,12 @@ const Layout = ({ children }) => {
   const page = pages.find(page => page.path === pathname);
 
   const [ogUrl, setOgUrl] = useState('');
-  useEffect(
-    page => {
-      const host = window.location.host;
-      const protocol = window.location.protocol;
-      setOgUrl(`${protocol}//${host}/images/pages/${page?.image}`);
-    },
-    [page],
-  );
+  useEffect(() => {
+    const host = window.location.host;
+    const protocol = window.location.protocol;
+    setOgUrl(`${protocol}//${host}/images/pages/${page?.image}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const title = `ArugaZ${page?.title ? ' | ' + page.title : ''}`;
   const desc = page?.desc ? page.desc : '';
