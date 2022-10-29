@@ -4,7 +4,7 @@ import { svgAnimation } from '@/data/animations';
 
 const LoadingPage = () => {
   const [show, setShow] = useState(true);
-  setTimeout(() => setShow(false), 1100);
+  setTimeout(() => setShow(false), 300);
 
   return (
     <div className="relative flex h-screen w-full items-center justify-center">

@@ -11,7 +11,7 @@ const MyApp = ({ Component, pageProps }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [customCursor, setCustomCursor] = useState('initial');
 
-  setTimeout(() => setLoading(false), 3800);
+  setTimeout(() => setLoading(false), 950);
 
   useEffect(() => {
     const mouseIn = () => setCustomCursor('animate');

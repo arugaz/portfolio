@@ -1,5 +1,5 @@
 export const svgAnimation = {
-  transition: { duration: 3, ease: 'easeInOut' },
+  transition: { duration: 0.5, ease: 'easeInOut' },
   initial: { pathLength: 0 },
   animate: { pathLength: 1 },
   exit: { pathLength: 0 },
