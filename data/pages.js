@@ -14,4 +14,9 @@ export const pages = [
     title: 'Works',
     desc: 'List of works that I am involved in...',
   },
+  {
+    path: '/contact',
+    title: 'Contact',
+    desc: 'Have a question? Drop us a note here and i will be in touch soon....',
+  },
 ];
