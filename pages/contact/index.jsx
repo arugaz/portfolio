@@ -45,9 +45,9 @@ const Contact = () => {
         {contacts.map((contact, id) => (
           <a
             key={id}
-            href={contact.href}
             target="_blank"
-            rel="noreferrer"
+            href={contact.url}
+            rel="noreferrer noopener nofollow"
             className="my-4 flex justify-end fill-secondary-light transition-all duration-500 hover:fill-primary-light hover:text-primary-light">
             <div className="mr-8">
               <h4 className="text-base">{contact.name}</h4>
