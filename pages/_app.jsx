@@ -8,7 +8,7 @@ import '@/style/globals.css';
 
 const MyApp = ({ Component, pageProps }) => {
   const [loading, setLoading] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: -75 });
   const [customCursor, setCustomCursor] = useState('initial');
 
   setTimeout(() => setLoading(false), 950);
