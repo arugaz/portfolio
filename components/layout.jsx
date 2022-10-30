@@ -2,17 +2,8 @@ import Head from 'next/head';
 import { pages } from '@/data/pages';
 import { useRouter } from 'next/router';
 import { projects } from '@/data/projects';
-import { useState, useEffect } from 'react';
 
 const Layout = ({ children }) => {
-  const [ogUrl, setOgUrl] = useState('');
-  useEffect(() => {
-    const host = window.location.host;
-    const protocol = window.location.protocol;
-    setOgUrl(`${protocol}//${host}/images/favicon/favicon.ico`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const {
     asPath,
     query: { slug },
@@ -24,6 +15,7 @@ const Layout = ({ children }) => {
 
   const title = `ArugaZ${page?.title ? ' | ' + page.title : ''}`;
   const desc = page?.desc ? page.desc : '';
+  const img = `${process.env.NEXT_PUBLIC_DOMAIN}/images/favicon/favicon.ico`;
 
   return (
     <>
@@ -33,7 +25,7 @@ const Layout = ({ children }) => {
         <meta name="description" content={desc} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
-        <meta property="og:image" content={ogUrl} />
+        <meta property="og:image" content={img} />
       </Head>
       <>{children}</>
     </>
