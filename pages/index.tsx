@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { contentAnimation, fadeAnimation, cardHomeAnimation } from '@/data/animations';
 import profileImage from '@/image/pages/profile.jpg';
 
-const Home = () => {
+export default function Home() {
   return (
     <main className="relative flex w-full flex-col items-center justify-evenly py-40 md:h-screen md:flex-row md:overflow-hidden">
       <motion.span
@@ -33,9 +33,8 @@ const Home = () => {
             {...fadeAnimation}
             className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl">
             <Image
-              priority
+              priority={true}
               src={profileImage}
-              layout="intrinsic"
               placeholder="blur"
               alt="Arga Astri Bimantara"
               className="relative rounded-full"
@@ -46,13 +45,11 @@ const Home = () => {
 
       <motion.section {...contentAnimation} className="relative order-1 w-1/3 md:order-2">
         <h3 className="-mb-5 text-base font-normal">Hi there! i&apos;m...</h3>
-        <h1 className="-ml-1 mb-3 text-7xl font-bold text-primary-light">arugaz</h1>
-        <h4 className="text-sm font-light transition-all duration-500 hover:text-primary-light">
+        <h1 className="-ml-1 text-7xl font-bold text-primary-light">arugaz</h1>
+        <h4 className="text-base font-light transition-all duration-500 hover:text-primary-light">
           cat lover
         </h4>
       </motion.section>
     </main>
   );
-};
-
-export default Home;
+}

@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { fadeAnimation, lineAnimation } from '@/data/animations';
 import { pages } from '@/data/pages';
 
-const Header = () => {
+export default function Header() {
   const [close, setClose] = useState(true);
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
 
   return (
     <motion.header
@@ -64,7 +64,7 @@ const Header = () => {
                 key={link.title}
                 href={link.path}
                 className={`transition-all duration-500 hover:text-primary-light ${
-                  pathname !== link.path ? '' : 'text-primary-light'
+                  asPath !== link.path ? '' : 'text-primary-light'
                 }`}>
                 {link.title}
               </Link>
@@ -74,6 +74,4 @@ const Header = () => {
       </div>
     </motion.header>
   );
-};
-
-export default Header;
+}

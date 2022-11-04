@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { svgAnimation } from '@/data/animations';
 
-const LoadingPage = () => {
+export default function Loading() {
   const [show, setShow] = useState(true);
   setTimeout(() => setShow(false), 300);
 
@@ -28,6 +28,4 @@ const LoadingPage = () => {
       </svg>
     </div>
   );
-};
-
-export default LoadingPage;
+}

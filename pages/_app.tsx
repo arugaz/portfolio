@@ -1,14 +1,18 @@
+import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import Layout from '@/components/layout';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-import Loading from '@/components/loading';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Loading from '@/components/Loading';
 import '@/style/globals.css';
+import Layout from '@/components/Layout';
 
-const MyApp = ({ Component, pageProps }) => {
+export default function MyApp({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0,
+  });
   const [customCursor, setCustomCursor] = useState('initial');
 
   setTimeout(() => setLoading(false), 950);
@@ -16,7 +20,8 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     const mouseIn = () => setCustomCursor('animate');
     const mouseOut = () => setCustomCursor('initial');
-    const mouseMove = ({ clientX, clientY }) => setMousePosition({ x: clientX, y: clientY });
+    const mouseMove = ({ clientX, clientY }: { clientX: number; clientY: number }) =>
+      setMousePosition({ x: clientX, y: clientY });
 
     window.addEventListener('mousemove', mouseMove);
     window.addEventListener('mouseout', mouseOut, true);
@@ -57,6 +62,4 @@ const MyApp = ({ Component, pageProps }) => {
       )}
     </Layout>
   );
-};
-
-export default MyApp;
+}

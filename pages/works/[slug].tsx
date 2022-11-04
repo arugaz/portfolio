@@ -4,13 +4,22 @@ import { withRouter } from 'next/router';
 import { projects } from '@/data/projects';
 import { fadeAnimation, contentAnimation } from '@/data/animations';
 
+type Project = {
+  title: string;
+  slug: string;
+  img: string;
+  demoUrl: string;
+  sourceUrl: string;
+  desc: string;
+};
+
 const Projects = withRouter(
   ({
     router: {
       query: { slug },
     },
   }) => {
-    const getProject = projects.find(project => project.slug === slug);
+    const getProject = projects.find(project => project.slug === slug) as Project;
 
     return (
       <main className="relative flex w-full items-center justify-center py-40 md:h-screen">
@@ -29,8 +38,6 @@ const Projects = withRouter(
                 <div className="relative mb-[6px] h-44 w-full md:h-[294px]">
                   <Image
                     priority
-                    width={683}
-                    height={384}
                     layout="fill"
                     className="relative"
                     alt={getProject.title}
@@ -39,7 +46,7 @@ const Projects = withRouter(
                 </div>
                 <div className="flex w-full justify-between bg-primary-dark text-center font-semibold text-primary-light">
                   <a
-                    href={getProject.demo}
+                    href={getProject.demoUrl}
                     target="_blank"
                     rel="noreferrer noopener nofollow"
                     className="w-[238px] rounded-bl-lg border-2 border-primary-dark py-1 transition-all duration-500 hover:bg-primary-light hover:text-primary-dark">
@@ -47,7 +54,7 @@ const Projects = withRouter(
                   </a>
                   <div className="w-[5px] bg-primary-light" />
                   <a
-                    href={getProject.sourceCode}
+                    href={getProject.sourceUrl}
                     target="_blank"
                     rel="noreferrer noopener nofollow"
                     className="w-[238px] rounded-br-lg border-2 border-primary-dark py-1 transition-all duration-500 hover:bg-primary-light hover:text-primary-dark">

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { techStuff } from '@/data/techstuff';
 import { contentAnimation, fadeAnimation } from '@/data/animations';
 
-const About = () => {
+export default function About() {
   return (
     <main className="relative flex w-full flex-col items-center justify-evenly py-40 md:h-screen md:flex-row md:overflow-hidden">
       <motion.span
@@ -54,6 +54,4 @@ const About = () => {
       </motion.section>
     </main>
   );
-};
-
-export default About;
+}

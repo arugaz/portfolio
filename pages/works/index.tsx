@@ -1,19 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { createRef, useEffect, useRef } from 'react';
 import { projects } from '@/data/projects';
 import { projectCardAnimation, fadeAnimation } from '@/data/animations';
 
 const Works = () => {
-  const ref = useRef(0);
+  const ref = createRef<HTMLDivElement>();
 
   useEffect(() => {
-    const scroll = () => (ref.current.style.transform = `translateX(${-window.scrollY}px)`);
-
+    const scroll = () => {
+      if (ref.current && ref.current.style.transform !== undefined)
+        ref.current.style.transform = `translateX(${-window.scrollY}px)`;
+    };
     window.addEventListener('scroll', scroll);
     return () => window.removeEventListener('scroll', scroll);
-  }, []);
+  }, [ref]);
 
   return (
     <main className="relative flex h-[450vh] items-center justify-center">
@@ -34,8 +36,6 @@ const Works = () => {
                 className="relative h-44 w-full overflow-hidden rounded-md bg-primary-dark">
                 <motion.span {...fadeAnimation}>
                   <Image
-                    width={683}
-                    height={384}
                     layout="fill"
                     alt={project.title}
                     src={`/images/projects/${project.img}`}
@@ -45,15 +45,12 @@ const Works = () => {
               </Link>
               <div className="py-2 text-xl font-medium text-primary-dark">{project.title}</div>
               <div className="flex w-full justify-between px-3 pt-1 pb-4">
-                <a href={project.demo} target="_blank" rel="noreferrer noopener nofollow">
+                <a href={project.demoUrl} target="_blank" rel="noreferrer noopener nofollow">
                   <span className="rounded-md border-2 border-primary-dark px-3 py-2 font-semibold text-primary-dark transition-all duration-500 hover:bg-primary-dark hover:text-primary-light">
                     View Demo
                   </span>
                 </a>
-                <a
-                  href={project.sourceCode}
-                  target="_blank"
-                  rel="noreferrer noopener nofollow">
+                <a href={project.sourceUrl} target="_blank" rel="noreferrer noopener nofollow">
                   <span className="rounded-md border-2 border-primary-dark px-1 py-2 font-semibold text-primary-dark transition-all duration-500 hover:bg-primary-dark hover:text-primary-light">
                     Source Code
                   </span>

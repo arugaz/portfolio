@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { fadeAnimation, lineAnimation } from '@/data/animations';
 
-const Footer = () => {
+export default function Footer() {
   return (
     <motion.footer
       {...fadeAnimation}
@@ -27,6 +27,4 @@ const Footer = () => {
       </div>
     </motion.footer>
   );
-};
-
-export default Footer;
+}

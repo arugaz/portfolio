@@ -1,34 +1,39 @@
+import { createRef, useState } from 'react';
+import type { SyntheticEvent } from 'react';
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { contacts } from '@/data/contacts';
 import { contentAnimation, fadeAnimation } from '@/data/animations';
+import { contacts } from '@/data/contacts';
 
-const Contact = () => {
-  const formRef = useRef();
+export default function Contact() {
+  const formRef = createRef<HTMLFormElement>();
   const [openModal, setOpenModal] = useState(false);
   const [messageAlert, setMessageAlert] = useState(false);
 
-  const submitForm = async e => {
+  const submitForm = (e: SyntheticEvent) => {
     e.preventDefault();
-    try {
-      const resp = await fetch('/api/contact-form', {
-        method: 'POST',
-        body: JSON.stringify({
-          name: e.target.name.value,
-          email: e.target.email.value,
-          message: e.target.message.value,
-        }),
+    const target = e.target as typeof e.target & {
+      name: { value: string };
+      email: { value: string };
+      message: { value: string };
+    };
+
+    fetch('/api/contact-form', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: target.name.value,
+        email: target.email.value,
+        message: target.message.value,
+      }),
+    })
+      .then(() => {
+        if (formRef.current && formRef.current.reset) formRef.current.reset();
+        setMessageAlert(true);
+        setOpenModal(true);
+      })
+      .catch(() => {
+        setMessageAlert(false);
+        setOpenModal(true);
       });
-
-      if (resp.status !== 200) throw '';
-
-      formRef.current.reset();
-      setMessageAlert(true);
-      setOpenModal(true);
-    } catch {
-      setMessageAlert(false);
-      setOpenModal(true);
-    }
   };
 
   return (
@@ -113,6 +118,4 @@ const Contact = () => {
       </motion.div>
     </section>
   );
-};
-
-export default Contact;
+}
