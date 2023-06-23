@@ -2,17 +2,17 @@ export const pages = [
   {
     path: '/',
     title: 'Home',
-    desc: 'ArugaZ is one of the developers in Indonesia. My name is Arga Astri Bimantara, feel free to say hi.',
+    desc: 'SkyUniverse is a YouTuber and Developer from Indonesia! Dont forget to say `hei!`.',
   },
   {
     path: '/about',
     title: 'About',
-    desc: 'My name is Arga Astri Bimantara, you can call me Aruga. I was born in Jakarta, Indonesia.',
+    desc: 'My name is SkyUniverse Nanz',
   },
   {
     path: '/works',
-    title: 'Works',
-    desc: 'List of works that I am involved in...',
+    title: 'Project',
+    desc: 'List of what i provide in this website...',
   },
   {
     path: '/contact',

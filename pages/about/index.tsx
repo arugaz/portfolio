@@ -35,21 +35,11 @@ export default function About() {
       <motion.section
         {...contentAnimation}
         className="relative order-1 my-10 w-3/4 md:order-2 md:my-0 md:w-1/4">
-        <p className="text-md mb-4 text-justify text-base font-light">
-          My name is Arga Astri Bimantara, you can call me Aruga. I was born in Jakarta,
-          Indonesia. I am a 17yo programmer, hope you all have good day &#128513;
-        </p>
+        <p className="text-md mb-4 text-justify text-base font-light">Hey! My nickname is SkyUniverse Nanz. I'm from Jakarta, Indonesia.</p>
         <ul className="list-inside list-disc">
-          <li className="text-md font-light text-primary-light">
-            I &#128157; to learn, develop and experiment with programs and awesome things on
-            internet.
-          </li>
-          <li className="text-md font-light text-primary-light">
-            I &#128157; to watch anime, read comic, and being cosplayer.
-          </li>
-          <li className="text-md font-light text-primary-light">
-            I &#128157; to connect with more people.
-          </li>
+          <li className="text-md font-light text-primary-light">I still learn about code and experiment with something new.</li>
+          <li className="text-md font-light text-primary-light">I'm interest in Cryptocurrency and Blockchain.</li>
+          <li className="text-md font-light text-primary-light">I just do what i loved.</li>
         </ul>
       </motion.section>
     </main>

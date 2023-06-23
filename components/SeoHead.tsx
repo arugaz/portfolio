@@ -3,16 +3,16 @@ import { useRouter } from 'next/router';
 
 // Default value for some meta data
 const defaultMeta = {
-  title: 'ArugaZ',
-  siteName: 'ArugaZ',
-  desc: 'ArugaZ is one of the developers in Indonesia. My name is Arga Astri Bimantara, feel free to say hi.',
+  title: 'SkyUniverse',
+  siteName: 'SkyUniverse',
+  desc: 'SkyUniverse is a YouTuber and Developer from Indonesia! Dont forget to say `hei!`..',
   // change base url of your web (without '/' at the end)
-  url: 'https://arugaz.me',
+  url: 'https://website111.me',
   type: 'website',
   // change to follow, index if you want to
   robots: 'nofollow, noindex',
-  image: 'https://arugaz.me/images/pages/profile.jpg',
-  author: 'ArugaZ',
+  image: 'https://website111.me/images/pages/profile.jpg',
+  author: 'SkyUniverse',
 };
 
 /**
@@ -69,13 +69,12 @@ export default function SeoHead(props: {
       <meta property="og:image" content={meta.image} />
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@arugaz_id" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.desc} />
       <meta name="twitter:image" content={meta.image} />
       {/* Favicon */}
-      <link rel="shortcut icon" href="/favicon.ico" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="shortcut icon" href="/favicon.jpg" />
+      <link rel="icon" href="/favicon.jpg" />
     </Head>
   );
 }

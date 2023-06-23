@@ -3,7 +3,7 @@
 const nextConfig = {
   compress: false,
   generateBuildId: async () => {
-    return 'arugaz-id';
+    return 'nanz-id';
   },
   poweredByHeader: false,
   swcMinify: true,
