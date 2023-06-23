@@ -5,10 +5,18 @@ import Document, {
   Head,
   Main,
   NextScript,
-} from 'next/document';
+} from "next/document";
+
+import {
+  AdsterraScript468,
+  AdsterraScriptPopunder,
+  AdsterraScriptSocial,
+} from "pages/Adsterra";
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx);
 
     return initialProps;
@@ -23,7 +31,11 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
+          <AdsterraScriptPopunder />
+          <AdsterraScriptSocial />
+          <AdsterraScript468 />
           <Main />
+          <AdsterraScript468 />
           <NextScript />
         </body>
       </Html>
