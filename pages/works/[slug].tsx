@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { withRouter } from 'next/router';
-import { projects } from '@/data/projects';
-import { fadeAnimation, contentAnimation } from '@/data/animations';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { withRouter } from "next/router";
+import { projects } from "@/data/projects";
+import { fadeAnimation, contentAnimation } from "@/data/animations";
 
 type Project = {
   title: string;
@@ -19,19 +19,33 @@ const Projects = withRouter(
       query: { slug },
     },
   }) => {
-    const getProject = projects.find(project => project.slug === slug) as Project;
+    const getProject = projects.find(
+      (project) => project.slug === slug
+    ) as Project;
+
+    let href = "";
+    if (slug === "pubgcnfg") {
+      href = `/works/pubgcnfg/download/`;
+    } else if (slug === "apkmod") {
+      href = `/works/apkmod/download/`;
+    } else if (slug === "magiskmodule"){
+      href = `works/magiskmodule/download`
+    } else {
+      href = `/works/${getProject.demoUrl}`;
+    }
 
     return (
       <main className="relative flex w-full items-center justify-center py-40 md:h-screen">
         <motion.span
           {...fadeAnimation}
-          className="fixed left-0 -bottom-32 origin-top-left -rotate-90 text-9xl font-extrabold text-secondary-dark md:bottom-0 md:rotate-0">
-          WORKS
+          className="fixed left-0 -bottom-32 origin-top-left -rotate-90 text-9xl font-extrabold text-secondary-dark md:bottom-0 md:rotate-0"
+        >
+          PROJECT
         </motion.span>
-
         <motion.div
           {...contentAnimation}
-          className="relative flex w-72 flex-col rounded-xl bg-primary-light p-2 md:w-3/4 md:flex-row md:justify-between">
+          className="relative flex w-72 flex-col rounded-xl bg-primary-light p-2 md:w-3/4 md:flex-row md:justify-between"
+        >
           {slug && (
             <>
               <div className="mb-3 w-full overflow-hidden rounded-lg md:mb-0 md:w-[480px]">
@@ -44,21 +58,24 @@ const Projects = withRouter(
                     src={`/images/projects/${getProject.img}`}
                   />
                 </div>
+
                 <div className="flex w-full justify-between bg-primary-dark text-center font-semibold text-primary-light">
                   <a
-                    href={getProject.demoUrl}
-                    target="_blank"
+                    href="/works"
+                    target=""
                     rel="noreferrer noopener nofollow"
-                    className="w-[238px] rounded-bl-lg border-2 border-primary-dark py-1 transition-all duration-500 hover:bg-primary-light hover:text-primary-dark">
-                    <span>View Demo</span>
+                    className="w-[238px] rounded-bl-lg border-2 border-primary-dark py-1 transition-all duration-500 hover:bg-primary-light hover:text-primary-dark"
+                  >
+                    <span>Back</span>
                   </a>
                   <div className="w-[5px] bg-primary-light" />
                   <a
-                    href={getProject.sourceUrl}
+                    href={href}
                     target="_blank"
                     rel="noreferrer noopener nofollow"
-                    className="w-[238px] rounded-br-lg border-2 border-primary-dark py-1 transition-all duration-500 hover:bg-primary-light hover:text-primary-dark">
-                    <span>Source Code</span>
+                    className="w-[238px] rounded-br-lg border-2 border-primary-dark py-1 transition-all duration-500 hover:bg-primary-light hover:text-primary-dark"
+                  >
+                    <span>Visit</span>
                   </a>
                 </div>
               </div>
@@ -76,7 +93,7 @@ const Projects = withRouter(
         </motion.div>
       </main>
     );
-  },
+  }
 );
 
 export default Projects;
