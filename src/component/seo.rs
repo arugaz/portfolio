@@ -23,7 +23,7 @@ pub fn seo(props: &Props) -> Html {
       .iter()
       .find(|project| props.path.contains(project.slug))
       .map(|project| project.title)
-      .unwrap_or("");
+      .unwrap_or("Not Found");
   }
   document.set_title(&format!("ArugaZ - {}", title));
 
@@ -41,7 +41,7 @@ pub fn seo(props: &Props) -> Html {
       .iter()
       .find(|project| props.path.contains(project.slug))
       .map(|project| project.desc)
-      .unwrap_or("");
+      .unwrap_or("Not Found");
   }
   desc.set_attribute("content", description).unwrap();
 
