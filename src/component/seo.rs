@@ -21,7 +21,7 @@ pub fn seo(props: &Props) -> Html {
   if title == "" {
     title = project::PROJECTS
       .iter()
-      .find(|project| project.slug == props.path)
+      .find(|project| props.path.contains(project.slug))
       .map(|project| project.title)
       .unwrap_or("");
   }
@@ -39,7 +39,7 @@ pub fn seo(props: &Props) -> Html {
   if description == "" {
     description = project::PROJECTS
       .iter()
-      .find(|project| project.slug == props.path)
+      .find(|project| props.path.contains(project.slug))
       .map(|project| project.desc)
       .unwrap_or("");
   }
