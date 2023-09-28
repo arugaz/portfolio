@@ -1,0 +1,17 @@
+[package]
+name = "portfolio"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wasm-bindgen = "0.2.87"
+web-sys = "0.3.64"
+yew = { version = "0.20", features = ["csr"] }
+yew-hooks = "0.2.0"
+yew-router = "0.17"
+
+[profile.release]
+panic = 'abort'
+codegen-units = 1
+opt-level = 'z'
+lto = true
