@@ -2,16 +2,23 @@
 name = "portfolio"
 version = "0.1.0"
 edition = "2021"
+authors = [
+  "ArugaZ <arugaastri@gmail.com>",
+]
+repository = "https://github.com/arugaz/portfolio"
+homepage = "https://github.com/arugaz"
+license = "MIT"
+readme = "README.md"
 
 [dependencies]
+gloo = "0.10.0"
 wasm-bindgen = "0.2.87"
-web-sys = "0.3.64"
-yew = { version = "0.20", features = ["csr"] }
-yew-hooks = "0.2.0"
-yew-router = "0.17"
+web-sys = { version = "0.3.64", features = ["CssStyleDeclaration", "SvgElement"] }
+yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
+yew-router = { git = "https://github.com/yewstack/yew.git" }
 
 [profile.release]
-panic = 'abort'
+panic = "abort"
 codegen-units = 1
-opt-level = 'z'
+opt-level = "z"
 lto = true

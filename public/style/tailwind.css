@@ -6,7 +6,7 @@
   ::-webkit-scrollbar {
     width: 0;
   }
-  * {
+  html {
     @apply cursor-none font-lexend;
   }
   body {

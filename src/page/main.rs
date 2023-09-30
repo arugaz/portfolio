@@ -1,9 +1,9 @@
 use crate::{component, page};
+use gloo::{timers::callback::Timeout, utils::window};
 use wasm_bindgen::{closure, JsCast};
-use web_sys::{window, MouseEvent};
-use yew::prelude::*;
-use yew_hooks::use_timeout;
-use yew_router::prelude::*;
+use web_sys::MouseEvent;
+use yew::{function_component, html, use_effect_with, use_state, Html};
+use yew_router::{BrowserRouter, Routable, Switch};
 
 #[derive(Clone, Routable, PartialEq)]
 pub enum RouteApp {
@@ -15,12 +15,14 @@ pub enum RouteApp {
   Works,
   #[at("/works/:slug")]
   WorksList { slug: String },
+  #[at("/contact")]
+  Contact,
   #[not_found]
   #[at("/404")]
   NotFound,
 }
 
-pub fn switch(routes: RouteApp) -> Html {
+fn switch(routes: RouteApp) -> Html {
   match routes {
     RouteApp::Home => html! {
      <page::home::HomePage />
@@ -34,27 +36,22 @@ pub fn switch(routes: RouteApp) -> Html {
     RouteApp::WorksList { slug } => html! {
     <page::works::WorksListPage slug={slug} />
     },
+    RouteApp::Contact => html! {
+     <page::contact::ContactPage />
+    },
     RouteApp::NotFound => html! { <h1>{ "404" }</h1> },
   }
 }
 
 #[function_component]
 pub fn App() -> Html {
-  let current_path = window().unwrap().location().pathname().unwrap();
+  let current_path = window().location().pathname().unwrap();
   let loading = use_state(|| true);
   let mouse = use_state(|| (-150, -50));
 
   {
     let loading = loading.clone();
-    use_timeout(
-      move || {
-        loading.set(match *loading {
-          true => false,
-          false => true,
-        });
-      },
-      950,
-    );
+    Timeout::new(950, move || loading.set(false)).forget();
   };
 
   let on_mouse_move = {
@@ -68,17 +65,13 @@ pub fn App() -> Html {
     }
   };
 
-  use_effect_with_deps(
-    move |_| {
-      let mouse_move_cb = closure::Closure::wrap(Box::new(on_mouse_move) as Box<dyn FnMut(_)>);
-      window()
-        .unwrap()
-        .add_event_listener_with_callback("mousemove", mouse_move_cb.as_ref().unchecked_ref())
-        .unwrap();
-      mouse_move_cb.forget();
-    },
-    0,
-  );
+  use_effect_with((), move |_| {
+    let mouse_move_cb = closure::Closure::wrap(Box::new(on_mouse_move) as Box<dyn FnMut(_)>);
+    window()
+      .add_event_listener_with_callback("mousemove", mouse_move_cb.as_ref().unchecked_ref())
+      .unwrap();
+    mouse_move_cb.forget();
+  });
 
   html! {
     <BrowserRouter>
